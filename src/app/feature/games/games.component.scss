@@ -1,0 +1,41 @@
+@import '../../../assets/colors';
+
+.content {
+   display: flex;
+}
+
+.table {
+    margin-right: 20px;
+    border: solid 1px $black;
+    border-collapse: collapse;
+    border-spacing: 0;
+    text-align: start;
+
+    &__link {
+        text-decoration: underline;
+    }
+
+    &__line {
+        border: solid 1px $black;
+
+        &--selected {
+            background-color: $green
+        }
+    }
+
+    &__content {
+        padding-inline: 10px;
+        border: solid 1px $black;
+
+        &--winner {
+            background-color: $light-green;
+        }
+        &--looser {
+            background-color: $red;
+        }
+    }
+
+    &__winners {
+        min-width: 100%;
+    }
+}

@@ -1,0 +1,38 @@
+<main class="content">
+  <table class="table">
+    <thead>
+      <tr class="table__lines">
+        <th class="table__content">name</th>
+        <th class="table__content">played / won</th>
+        <th class="table__content"></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let participant of participants">
+      <tr class="table__line" [ngClass]="{'table__line--selected': currentSelectedId === participant.id}">
+        <td class="table__content" (click)="openDialog(participant.id)">{{participant.firstName}} {{participant.lastName}}</td>
+        <td class="table__content">{{numberOfGamesPlayed(participant.id)}}/{{numberOfGamesWon(participant.id)}}</td>
+        <td class="table__content"><a class="table__link" (click)="selectParticipant(participant.id)">select</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table *ngIf="gamesByParticipant.length > 0" class="table">
+    <thead>
+      <tr class="table__lines">
+        <th class="table__content">Winner</th> 
+        <th class="table__content">Looser</th> 
+      </tr>  
+    </thead>
+    
+    <tbody *ngFor="let participant of gamesByParticipant">
+      <tr class="table__line">
+        <td (click)="openDialog(participant.winnerId)" class="table__content" [ngClass]="{'table__content--winner': currentSelectedId === participant.winnerId}">{{getParticipantNameById(participant.winnerId)}}</td>
+        <td (click)="openDialog(participant.looserId)" class="table__content" [ngClass]="{'table__content--looser': currentSelectedId === participant.looserId}">{{getParticipantNameById(participant.looserId)}}</td>
+      </tr> 
+      <tr class="table__line">
+        <td class="table__content">{{participant.winnerScore}}</td>
+        <td class="table__content">{{participant.looserScore}}</td>
+      </tr> 
+    </tbody> 
+  </table>
+</main>

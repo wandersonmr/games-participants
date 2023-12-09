@@ -1,0 +1,14 @@
+.modal {
+    display: flex;
+
+    &__description {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__img {
+        margin-left: 10px;
+        height: 40px;
+        width: 40px;
+    }
+}
